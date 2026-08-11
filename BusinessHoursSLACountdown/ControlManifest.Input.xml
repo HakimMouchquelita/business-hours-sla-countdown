@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="HMQ" constructor="BusinessHoursSLACountdown" version="1.0.0" display-name-key="BusinessHoursSLACountdown" description-key="Displays a live countdown to an SLA deadline, counting only business hours. Color-coded by proximity to the deadline." control-type="virtual" >
+    <external-service-usage enabled="false">
+    </external-service-usage>
+    <!-- Bound field: the SLA deadline (Date and Time) -->
+    <property name="deadlineField" display-name-key="SLA Deadline" description-key="Bind to a Date and Time field holding the SLA due date (e.g. a Case's Resolve By or a custom SLA deadline field)." of-type="DateAndTime.DateAndTime" usage="bound" required="true" />
+    <!-- Business hours start (0-23) -->
+    <property name="businessHourStart" display-name-key="Business Hour Start" description-key="Hour the business day starts, 0-23 (default 9)." of-type="Whole.None" usage="input" required="false" />
+    <!-- Business hours end (0-23) -->
+    <property name="businessHourEnd" display-name-key="Business Hour End" description-key="Hour the business day ends, 0-23 (default 17)." of-type="Whole.None" usage="input" required="false" />
+    <!-- Working days: comma-separated day numbers 0=Sun..6=Sat -->
+    <property name="workingDays" display-name-key="Working Days" description-key="Comma-separated working day numbers where 0=Sunday..6=Saturday (default 1,2,3,4,5)." of-type="SingleLine.Text" usage="input" required="false" />
+    <!-- Warning threshold in business hours -->
+    <property name="warningHours" display-name-key="Warning Threshold (business hours)" description-key="When remaining business hours drop below this value, the countdown turns orange (default 4)." of-type="Whole.None" usage="input" required="false" />
+    <!-- Danger threshold in business hours -->
+    <property name="dangerHours" display-name-key="Danger Threshold (business hours)" description-key="When remaining business hours drop below this value, the countdown turns red (default 1)." of-type="Whole.None" usage="input" required="false" />
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.8.6" />
+      <platform-library name="Fluent" version="9.46.2" />
+    </resources>
+  </control>
+</manifest>
